@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Arabcha</title>
+<style>
+:root{--g:#58cc02;--gd:#46a302;--b:#1cb0f6;--bd:#1899d6;--r:#ff4b4b;--rd:#ea2b2b;--bg:#fff;--t:#3c3c3c;--m:#777;--l:#e5e5e5;--c:#f7f7f7}
+@media(prefers-color-scheme:dark){:root{--bg:#131f24;--t:#eee;--m:#9ab;--l:#37464f;--c:#202f36}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--t);padding-top:env(safe-area-inset-top)}
+#app{max-width:480px;margin:0 auto;min-height:100vh;padding:16px 16px 100px}
+.ar{font-family:'Noto Naskh Arabic','Traditional Arabic','Geeza Pro',serif;direction:rtl}
+button{font-family:inherit;cursor:pointer}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:14px;font-size:16px;font-weight:800;letter-spacing:.5px;color:#fff;background:var(--g);box-shadow:0 4px 0 var(--gd)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--gd)}
+.btn.bl{background:var(--b);box-shadow:0 4px 0 var(--bd)}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.x{font-size:22px;color:var(--m)}
+.bar{flex:1;height:14px;background:var(--l);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--g);border-radius:9px;transition:width .3s}
+h2{font-size:22px;margin:8px 0 18px}
+.big{font-size:64px;text-align:center;margin:20px 0 4px}
+.big2{font-size:30px;font-weight:800;text-align:center;margin:30px 0}
+.c{text-align:center;color:var(--m);margin-bottom:20px}
+.sp{background:var(--b);border:0;border-radius:14px;padding:8px 16px;font-size:20px;box-shadow:0 4px 0 var(--bd);color:#fff}
+.o{display:block;width:100%;background:var(--bg);color:var(--t);border:2px solid var(--l);border-bottom-width:4px;border-radius:16px;padding:14px;margin-bottom:10px;font-size:18px;font-weight:700}
+.o.ar{font-size:26px}
+.o.sel{border-color:var(--b);background:#1cb0f622}
+.o.ok{border-color:var(--g);background:#58cc0222;color:var(--g)}
+.o.no{border-color:var(--r);background:#ff4b4b22;color:var(--r)}
+.mt{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fb{position:fixed;left:0;right:0;bottom:0;padding:16px 16px calc(16px + env(safe-area-inset-bottom));background:var(--c);border-top:2px solid var(--l)}
+.fb b{display:block;margin-bottom:10px;font-size:18px}
+.fb.g b{color:var(--g)}.fb.r b{color:var(--r)}
+.fb.r .btn{background:var(--r);box-shadow:0 4px 0 var(--rd)}
+#nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:var(--bg);border-top:2px solid var(--l);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+#nav b{font-size:12px;display:flex;flex-direction:column;align-items:center;padding:6px 14px;border-radius:14px;color:var(--m);border:2px solid transparent}
+#nav b.on{border-color:var(--b);background:#1cb0f622;color:var(--b)}
+#nav b span{font-size:24px}
+.ub{border-radius:16px;padding:14px 16px;color:#fff;font-weight:800;margin:24px 0 16px}
+.nd{position:relative;width:68px;height:68px;border-radius:50%;border:0;font-size:28px;color:#fff;display:block;margin:0 auto 14px;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.nd.lk{background:var(--l)!important;color:var(--m)}
+.nd.cur{animation:p 1.3s infinite}@keyframes p{50%{box-shadow:0 6px 0 rgba(0,0,0,.25),0 0 0 8px #58cc0244}}
+.card{background:var(--c);border:2px solid var(--l);border-radius:16px;padding:14px;margin-bottom:12px}
+.st{display:flex;gap:8px;margin-bottom:16px}
+.st div{flex:1;text-align:center;font-weight:800;padding:10px 4px;border:2px solid var(--l);border-radius:14px}
+.gr{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gr div{border:2px solid var(--l);border-bottom-width:4px;border-radius:14px;text-align:center;padding:10px 2px}
+.gr .ar{display:block;font-size:34px}.gr small{color:var(--m);font-size:11px}
+.in{width:100%;padding:12px;border:2px solid var(--l);border-radius:14px;font-size:16px;margin-bottom:14px;background:var(--bg);color:var(--t)}
+.av{width:84px;height:84px;border-radius:50%;background:var(--b);color:#fff;font-size:38px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:10px auto}
+#nav b{padding:6px 8px}
+.ts{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#333;color:#fff;padding:10px 18px;border-radius:12px;z-index:9}
+.vd{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin-bottom:10px}
+#nav b{padding:6px 4px;font-size:11px;flex:1}#nav b span{font-size:22px}
+#kb{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--c);border-top:2px solid var(--l);padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+#kb div{display:flex;gap:4px;margin-bottom:4px;direction:ltr}
+#kb button{flex:1;min-width:0;font-size:22px;padding:8px 0;border:0;border-bottom:3px solid var(--l);border-radius:8px;background:var(--bg);color:var(--t);font-family:'Noto Naskh Arabic','Traditional Arabic',serif}
+.cb{position:fixed;left:0;right:0;bottom:calc(62px + env(safe-area-inset-bottom));display:flex;gap:8px;align-items:center;padding:8px 12px;background:var(--bg);border-top:2px solid var(--l);max-width:480px;margin:0 auto}
+#app>*{animation:up .3s both}@keyframes up{from{opacity:0;transform:translateY(12px)}}
+.mrow{display:flex;gap:12px;align-items:center;margin:10px 0 4px}
+.mc{font-size:56px;line-height:1;animation:bnc 2s infinite}@keyframes bnc{50%{transform:translateY(-6px)}}
+.bub{background:var(--c);border:2px solid var(--l);border-radius:16px;padding:10px 14px;font-weight:700;flex:1}
+.nd.cur{margin-top:42px}
+.nd.cur::before{content:'BOSHLASH';position:absolute;top:-36px;left:50%;transform:translateX(-50%);background:var(--bg);color:var(--g);font-size:12px;font-weight:800;padding:4px 10px;border-radius:10px;border:2px solid var(--l);white-space:nowrap;animation:bob 1s infinite alternate}
+@keyframes bob{to{transform:translate(-50%,-5px)}}
+.cf{position:fixed;top:-20px;width:9px;height:14px;z-index:20;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+</style></head><body>
+<div id="app"></div><div id="nav"></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const $=s=>document.querySelector(s),sh=a=>[...a].sort(()=>Math.random()-.5);
+const td=()=>new Date().toLocaleDateString('en-CA'),yd=()=>new Date(Date.now()-864e5).toLocaleDateString('en-CA');
+let P=JSON.parse(localStorage.getItem('arabcha')||'null')||{xp:0,st:0,last:'',day:'',dx:0,done:{},box:{},name:''};
+const save=()=>localStorage.setItem('arabcha',JSON.stringify(P));
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.8;speechSynthesis.speak(u)}catch(e){}}
+
+const LET="ا Alif|ب Ba|ت Ta|ث Sa|ج Jim|ح Ha (qattiq)|خ Xa|د Dal|ذ Zal|ر Ra|ز Zay|س Sin|ش Shin|ص Sod|ض Dod|ط To|ظ Zo|ع Ayn|غ G'ayn|ف Fa|ق Qof|ك Kaf|ل Lam|م Mim|ن Nun|ه Ha (yengil)|و Vov|ي Ya";
+const WD=[
+["Salomlashish","👋","#58cc02","مَرْحَبًا|salom|marhaban;السَّلَامُ عَلَيْكُمْ|assalomu alaykum|assalamu alaykum;شُكْرًا|rahmat|shukran;مِنْ فَضْلِكَ|iltimos|min fadlik;نَعَمْ|ha|na'am;لَا|yo'q|la;صَبَاحُ الْخَيْرِ|xayrli tong|sabahul xayr;مَعَ السَّلَامَةِ|xayr|ma'as salama"],
+["Oila","👨‍👩‍👧","#1cb0f6","أَبٌ|ota|ab;أُمٌّ|ona|umm;أَخٌ|aka-uka|akh;أُخْتٌ|opa-singil|ukht;ابْنٌ|o'g'il|ibn;بِنْتٌ|qiz|bint;جَدٌّ|bobo|jadd;جَدَّةٌ|buvi|jadda"],
+["Raqamlar","🔢","#ff9600","وَاحِدٌ|bir|wahid;اثْنَانِ|ikki|ithnan;ثَلَاثَةٌ|uch|thalatha;أَرْبَعَةٌ|to'rt|arba'a;خَمْسَةٌ|besh|khamsa;سِتَّةٌ|olti|sitta;سَبْعَةٌ|yetti|sab'a;ثَمَانِيَةٌ|sakkiz|thamaniya;تِسْعَةٌ|to'qqiz|tis'a;عَشَرَةٌ|o'n|ashara"],
+["Ranglar","🎨","#ff4b4b","أَحْمَرُ|qizil|ahmar;أَزْرَقُ|ko'k|azraq;أَخْضَرُ|yashil|akhdar;أَصْفَرُ|sariq|asfar;أَبْيَضُ|oq|abyad;أَسْوَدُ|qora|aswad"],
+["Ovqat","🍎","#ce82ff","مَاءٌ|suv|ma';خُبْزٌ|non|khubz;لَحْمٌ|go'sht|lahm;تُفَّاحٌ|olma|tuffah;حَلِيبٌ|sut|halib;شَايٌ|choy|shay;أَرُزٌّ|guruch|aruzz;سَمَكٌ|baliq|samak"],
+["Maktab","🏫","#00b8a9","كِتَابٌ|kitob|kitab;قَلَمٌ|qalam|qalam;مَدْرَسَةٌ|maktab|madrasa;مُعَلِّمٌ|o'qituvchi|mu'allim;طَالِبٌ|o'quvchi|talib;بَابٌ|eshik|bab;بَيْتٌ|uy|bayt;مَسْجِدٌ|masjid|masjid"]];
+let units,order,allW,X={words:[],videos:[]};try{X=JSON.parse(localStorage.x)||X}catch(e){}
+function build(){const base=[{n:"Alifbo",e:"🔤",c:"#7c5cff",w:0,it:LET.split('|').map(s=>({a:s[0],u:s.slice(2),t:''}))}]
+.concat(WD.map(d=>({n:d[0],e:d[1],c:d[2],w:1,it:d[3].split(';').map(s=>{const p=s.split('|');return{a:p[0],u:p[1],t:p[2]}})})));
+X.words.forEach(w=>{let u=base.find(u=>u.n==w.g&&u.w);if(!u){u={n:w.g,e:"📚",c:"#00b8a9",w:1,it:[]};base.push(u)}u.it.push({a:w.a,u:w.u,t:w.t||''})});
+base.forEach(u=>{const per=u.w?Math.ceil(u.it.length/2):7;u.ls=[];for(let j=0;j<u.it.length;j+=per)u.ls.push(u.it.slice(j,j+per))});
+units=base;order=units.flatMap((u,i)=>u.ls.map((_,j)=>i+'-'+j));
+allW=units.filter(u=>u.w).flatMap(u=>u.it)}
+build();
+let tab='home',L=null,F=null;
+const stk=()=>P.last==td()||P.last==yd()?P.st:0;
+function bump(x){const t=td();if(P.day!=t){P.day=t;P.dx=0}P.dx+=x;P.xp+=x;if(P.last!=t){P.st=P.last==yd()?P.st+1:1;P.last=t}save()}
+
+function go(t){tab=t;L=F=null;$('#nav').style.display='flex';draw()}
+function draw(){
+kbC();if(!ready||!USER){$('#nav').style.display='none';$('#app').innerHTML=ready?login():'<div class=c style="padding-top:120px">Yuklanmoqda...</div>';return}
+$('#nav').style.display='flex';
+$('#nav').innerHTML=[['home','🏠','Asosiy'],['abc','🔤','Alifbo'],['vid','🎬','Video'],['dict','📖',"Lug'at"],['chat','💬','Suhbat'],['me','👤','Profil']].map(n=>`<b class="${tab==n[0]?'on':''}" onclick="go('${n[0]}')"><span>${n[1]}</span>${n[2]}</b>`).join('');
+$('#app').innerHTML={home,abc,vid,dict,chat,me}[tab]();if(tab=='chat')paint();else window.scrollTo(0,0)}
+
+function home(){
+const dx=P.day==td()?P.dx:0;
+let h=`<div class=st><div>🔥 ${stk()}</div><div>⚡ ${P.xp}</div><div>🎯 ${dx}/50</div></div><div class=bar style="margin-bottom:8px"><i style="width:${Math.min(100,dx*2)}%"></i></div><div class=mrow><div class=mc>🐪</div><div class=bub>${dx>=50?'Mashaalloh! Bugungi maqsad bajarildi 🎉':dx?'Davom etamiz! Maqsadgacha yana '+(50-dx)+' XP 💪':P.xp?'Salom'+(P.name?', '+esc(P.name):'')+'! Bugun ham mashq qilamizmi?':'Assalomu alaykum! Birinchi darsni boshlaymiz 👇'}</div></div>`;
+let g=0;
+units.forEach((u,i)=>{h+=`<div class=ub style="background:${u.c}">${u.e} ${u.n}</div>`;
+u.ls.forEach((_,j)=>{const d=P.done[i+'-'+j],ok=g==0||P.done[order[g-1]];
+h+=`<button class="nd ${d?'':ok?'cur':'lk'}" style="background:${d?'#ffc800':u.c};left:${[0,38,0,-38][j%4]}px" ${ok?`onclick="start(${i},${j})"`:''}>${d?'⭐':ok?'▶':'🔒'}</button>`;g++})});
+return h}
+
+function start(i,j){
+const u=units[i],it=u.ls[j],all=u.it;let ex=[];
+it.forEach(x=>{
+ex.push({k:'c',q:x.a,qa:1,t:x.t,ans:x.u,pool:all.map(y=>y.u)});
+ex.push({k:'c',q:x.u,ans:x.a,aa:1,pool:all.map(y=>y.a)});
+if(u.w)ex.push({k:'l',ans:x.a,aa:1,pool:all.map(y=>y.a),say:x.a});
+if(u.w&&!x.a.includes(' ')&&x.a.length<14)ex.push({k:'b',ans:x.a,u:x.u})});
+ex=sh(ex).slice(0,12);ex.push({k:'m',pairs:sh(it).slice(0,5)});
+L={i,j,ex,n:0,bad:0,tot:ex.length,lock:0,h:5,cb:0};$('#nav').style.display='none';step()}
+
+function step(){
+if(!L.ex.length)return fin();
+const e=L.ex[0];L.lock=0;
+let h=`<div class=top><span class=x onclick="go('home')">✕</span><div class=bar><i style="width:${L.n/L.tot*100}%"></i></div><b style="font-size:18px">❤️ ${L.h}</b></div>`;
+if(e.k=='m')h+=match(e);
+else if(e.k=='b')h+=tiles(e);
+else{
+L.op=sh([e.ans,...sh([...new Set(e.pool)].filter(x=>x!=e.ans)).slice(0,3)]);
+h+=`<h2>${e.k=='l'?'Eshiting va tanlang':e.qa?'Tarjimasini toping':'Arabchasini toping'}</h2>`;
+if(e.k=='l')h+=`<div class=c style="margin:40px 0"><button class=sp style="font-size:42px" onclick="say(L.ex[0].say)">🔊</button></div>`;
+else if(e.qa)h+=`<div class="big ar">${e.q}</div><div class=c>${e.t?e.t+' ':''}<button class=sp onclick="say(L.ex[0].q)">🔊</button></div>`;
+else h+=`<div class=big2>${e.q}</div>`;
+h+=L.op.map((o,k)=>`<button class="o ${e.aa?'ar':''}" onclick="pick(${k})">${o}</button>`).join('')}
+$('#app').innerHTML=h;
+if(e.k=='l')setTimeout(()=>say(e.say),300)}
+
+function pick(k){
+if(L.lock)return;L.lock=1;
+const e=L.ex[0],ok=L.op[k]==e.ans,bs=document.querySelectorAll('.o');
+bs[k].classList.add(ok?'ok':'no');
+if(!ok)bs[L.op.indexOf(e.ans)].classList.add('ok');
+if(e.aa||e.qa)say(e.k=='c'&&e.qa?e.q:e.ans);
+fbk(ok,e.ans)}
+
+function fbk(ok,ans){
+if(ok){L.cb++;snd(1)}else{L.bad++;L.h--;L.cb=0;snd(0)}
+const m=ok?(L.cb>=3?'🔥 '+L.cb+' ta ketma-ket!':PR[Math.random()*PR.length|0]):'Javob: <span class=ar>'+ans+'</span>';
+$('#app').insertAdjacentHTML('beforeend',`<div class="fb ${ok?'g':'r'}"><b>${m}</b><button class=btn onclick="nx(${ok?1:0})">DAVOM ETISH</button></div>`)}
+
+function nx(ok){const e=L.ex.shift();if(ok)L.n++;else L.ex.push(e);if(L.h<=0)return lose();step()}
+function lose(){$('#app').innerHTML=`<div style="text-align:center;padding-top:60px"><div style="font-size:80px">💔</div><h2>Yuraklar tugadi</h2><div class=c>Xafa bo'lmang, xatolardan o'rganiladi. Yana urinib ko'ring!</div><button class=btn onclick="start(${L.i},${L.j})">QAYTA URINISH</button><button class="btn bl" style="margin-top:12px" onclick="go('home')">ORQAGA</button></div>`}
+const PR=["Mashaalloh! 🌟","Zo'r! 💪","A'lo! 🔥","Ajoyib! 👏","Barakalla! ✨","Tabriklayman! 🎉"];
+let AC;function snd(ok){try{AC=AC||new(window.AudioContext||webkitAudioContext)();const t=AC.currentTime;(ok?[660,880]:[220,160]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;o.type=ok?'sine':'sawtooth';g.gain.setValueAtTime(.15,t+i*.12);g.gain.exponentialRampToValueAtTime(.001,t+i*.12+.2);o.connect(g);g.connect(AC.destination);o.start(t+i*.12);o.stop(t+i*.12+.2)})}catch(e){}}
+function confetti(){for(let i=0;i<45;i++){const d=document.createElement('i');d.className='cf';d.style.cssText=`left:${Math.random()*100}vw;background:hsl(${Math.random()*360},90%,60%);animation-delay:${Math.random()*.6}s;animation-duration:${1.5+Math.random()}s`;document.body.appendChild(d);setTimeout(()=>d.remove(),3000)}}
+const strip=s=>s.replace(/[\u064B-\u0652]/g,'');
+function tiles(e){const t=[...strip(e.ans)];e.t=t.join('');
+const ex=sh([...'اوبرمنلتكسدهيع'].filter(c=>!t.includes(c))).slice(0,2);L.tl=sh([...t,...ex]);L.an=[];
+return `<h2>Arabcha yozing</h2><div class=big2 style="margin:10px 0">${e.u}</div><div id=an class=ar style="min-height:64px;border-bottom:2px solid var(--l);font-size:36px;display:flex;flex-wrap:wrap;gap:8px;padding:8px"></div><div id=tl style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0">${L.tl.map((c,k)=>`<button class="o ar" style="width:56px;margin:0;font-size:28px;padding:8px" onclick="tp(${k},this)">${c}</button>`).join('')}</div><button class=btn onclick="tchk()">TEKSHIRISH</button>`}
+function tp(k,b){if(L.lock)return;b.style.visibility='hidden';L.an.push(k);tr()}
+function tr(){$('#an').innerHTML=L.an.map((k,i)=>`<span onclick="tu(${i})">${L.tl[k]}</span>`).join('')}
+function tu(i){if(L.lock)return;const k=L.an.splice(i,1)[0];document.querySelectorAll('#tl button')[k].style.visibility='visible';tr()}
+function tchk(){if(L.lock)return;const e=L.ex[0],g=L.an.map(k=>L.tl[k]).join('');L.lock=1;fbk(g==e.t,e.ans)}
+
+function match(e){
+L.mm=e.pairs.length;L.sel=null;
+const A=sh(e.pairs),B=sh(e.pairs);
+return `<h2>Juftini toping</h2><div class=mt><div>${A.map(p=>`<button class="o ar" data-s=a data-v="${p.u}" onclick="mp(this)">${p.a}</button>`).join('')}</div><div>${B.map(p=>`<button class=o data-s=b data-v="${p.u}" onclick="mp(this)">${p.u}</button>`).join('')}</div></div>`}
+
+function mp(b){
+if(b.disabled)return;
+if(!L.sel){L.sel=b;b.classList.add('sel');return}
+if(L.sel.dataset.s==b.dataset.s){L.sel.classList.remove('sel');L.sel=b;b.classList.add('sel');return}
+const a=L.sel;L.sel=null;a.classList.remove('sel');
+if(a.dataset.v==b.dataset.v){[a,b].forEach(x=>{x.classList.add('ok');x.disabled=true});
+snd(1);say((a.dataset.s=='a'?a:b).textContent);
+if(--L.mm==0)fbk(1,'')}
+else{L.bad++;L.h--;snd(0);[a,b].forEach(x=>{x.classList.add('no');setTimeout(()=>x.classList.remove('no'),500)})}}
+
+function fin(){
+const u=units[L.i],x=10+Math.max(0,10-L.bad*2);
+if(u.w)u.ls[L.j].forEach(w=>{P.box[w.a]=Math.max(P.box[w.a]||0,1)});
+P.done[L.i+'-'+L.j]=1;bump(x);snd(1);setTimeout(confetti,150);
+$('#app').innerHTML=`<div style="text-align:center;padding-top:60px"><div class=mc style="font-size:96px">🐪</div><div class=bub style="margin:10px 0 20px">Barakalla! Dars tugadi 🎉</div><div class=st><div>⚡ +${x} XP</div><div>❤️ ${Math.max(L.h,0)}</div><div>❌ ${L.bad}</div></div><button class=btn onclick="go('home')">DAVOM ETISH</button></div>`}
+
+function abc(){
+return `<h2>Alifbo</h2><div class=c>Harfni bosing, talaffuzini eshiting</div><div class=gr>${units[0].it.map(l=>`<div onclick="say('${l.a}')"><span class=ar>${l.a}</span><small>${l.u}</small></div>`).join('')}</div>`}
+
+function dict(){
+return `<h2>Lug'at</h2><button class="btn bl" style="margin-bottom:16px" onclick="cards()">KARTALARNI TAKRORLASH</button><input class=in placeholder="Qidirish..." oninput="$('#lst').innerHTML=lst(this.value)"><div id=lst>${lst('')}</div>`}
+function lst(q){q=q.toLowerCase();
+return allW.filter(w=>(w.a+w.u+w.t).toLowerCase().includes(q)).map(w=>`<div class=card style="display:flex;align-items:center;gap:12px" onclick="say('${w.a}')"><span class=ar style="font-size:28px;min-width:90px">${w.a}</span><span><b>${w.u}</b><br><small>${w.t}</small></span><span style="margin-left:auto">${(P.box[w.a]||0)>=3?'✅':'🔊'}</span></div>`).join('')||'<div class=c>Hech narsa topilmadi</div>'}
+
+function cards(){
+let q=sh(allW.filter(w=>(P.box[w.a]||0)<3)).slice(0,10);
+if(!q.length)q=sh(allW).slice(0,10);
+F={q,n:0};$('#nav').style.display='none';card(0)}
+function card(s){
+if(!F.q.length){bump(F.n*2);$('#app').innerHTML=`<div style="text-align:center;padding-top:60px"><div style="font-size:80px">🧠</div><h2>Takrorlash tugadi!</h2><div class=st><div>⚡ +${F.n*2} XP</div></div><button class=btn onclick="go('dict')">DAVOM ETISH</button></div>`;return}
+const w=F.q[0];
+$('#app').innerHTML=`<div class=top><span class=x onclick="go('dict')">✕</span><div class=bar><i style="width:${F.n/(F.n+F.q.length)*100}%"></i></div></div><div class="big ar" style="margin-top:60px">${w.a}</div><div class=c><button class=sp onclick="say(F.q[0].a)">🔊</button></div>`+
+(s?`<div class=big2 style="margin:10px 0">${w.u}</div><div class=c>${w.t}</div><div style="display:flex;gap:10px"><button class=btn style="background:var(--r);box-shadow:0 4px 0 var(--rd)" onclick="know(0)">BILMAYMAN</button><button class=btn onclick="know(1)">BILAMAN</button></div>`:`<button class="btn bl" style="margin-top:40px" onclick="card(1)">JAVOBNI KO'RSATISH</button>`);
+say(w.a)}
+function know(k){
+const w=F.q.shift();P.box[w.a]=k?Math.min(5,(P.box[w.a]||0)+1):0;
+if(k)F.n++;else F.q.push(w);save();card(0)}
+
+function me(){return me0()+acct()}
+function me0(){
+const nd=Object.keys(P.done).length,kn=allW.filter(w=>(P.box[w.a]||0)>=3).length;
+const A=[['🌱','Birinchi dars',nd>=1],['🔥','3 kunlik seriya',P.st>=3&&stk()>=3],['⚡','100 XP',P.xp>=100],['📖',"20 ta so'z o'rganildi",kn>=20],['🏆','Barcha darslar',nd>=order.length]];
+return `<div class=av>${(P.name||'A')[0].toUpperCase()}</div><input class=in style="text-align:center;font-weight:800" placeholder="Ismingiz" value="${P.name}" onchange="P.name=this.value;save();draw()">
+<div class=st><div>🔥 ${stk()}<br><small>seriya</small></div><div>⚡ ${P.xp}<br><small>XP</small></div></div>
+<div class=st><div>✅ ${nd}/${order.length}<br><small>dars</small></div><div>📖 ${kn}<br><small>so'z</small></div></div>
+<h2>Yutuqlar</h2>${A.map(a=>`<div class=card style="opacity:${a[2]?1:.4}">${a[0]} <b>${a[1]}</b> ${a[2]?'✅':'🔒'}</div>`).join('')}
+<button class=btn style="background:var(--m);box-shadow:0 4px 0 #555;margin-top:20px" onclick="if(this.dataset.s){localStorage.clear();location.reload()}else{this.dataset.s=1;this.textContent='ANIQMI? YANA BOSING'}">PROGRESSNI O'CHIRISH</button>`}
+let USER=null,ready=0,auth,db;
+const ADMIN='boborakhim3@gmail.com',isA=()=>USER&&USER.email==ADMIN&&USER.emailVerified;
+const ER={'auth/invalid-credential':"Email yoki parol noto'g'ri",'auth/invalid-email':"Email noto'g'ri",'auth/email-already-in-use':"Bu email allaqachon ro'yxatdan o'tgan",'auth/weak-password':"Parol kamida 6 belgi bo'lsin",'auth/missing-password':"Parolni kiriting",'auth/network-request-failed':"Internet yo'q"};
+function toast(t){const d=document.createElement('div');d.className='ts';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2500)}
+function login(){return `<div style="text-align:center;padding-top:50px"><div style="font-size:64px">🕌</div><h2>Arabcha</h2><div class=c>Kirish yoki ro'yxatdan o'tish</div><input id=em class=in type=email placeholder="Email"><input id=pw class=in type=password placeholder="Parol (kamida 6 belgi)"><div id=er style="color:var(--r);min-height:22px;margin-bottom:10px"></div><button class=btn onclick="sign(0)">KIRISH</button><button class="btn bl" style="margin-top:12px" onclick="sign(1)">RO'YXATDAN O'TISH</button><div class=c style="margin-top:24px">Muammo yoki taklif: <a href="https://t.me/xayrullayevlc" target=_blank>@xayrullayevlc</a></div></div>`}
+async function sign(m){const e=$('#em').value.trim(),p=$('#pw').value;$('#er').textContent='...';try{if(m){const c=await auth.createUserWithEmailAndPassword(e,p);try{await c.user.sendEmailVerification()}catch(x){}}else await auth.signInWithEmailAndPassword(e,p)}catch(x){$('#er').textContent=ER[x.code]||x.message}}
+function vid(){let h='<h2>Videolar</h2>';if(!X.videos.length)return h+'<div class=c>Hozircha video yo\'q</div>';
+return h+X.videos.map(v=>`<div class=card><b>${v.t}</b><div style="margin-top:10px"><iframe class=vd loading=lazy src="https://www.youtube.com/embed/${v.id}" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><a href="https://youtu.be/${v.id}" target=_blank style="color:var(--b);font-weight:700">YouTube'da ochish</a></div></div>`).join('')}
+function acct(){let h=`<div class=c style="margin-top:20px">${USER.email}</div>`;
+if(USER.email==ADMIN&&!USER.emailVerified)h+=`<div class=card>Admin bo'lish uchun emailingizni tasdiqlang: pochtangizga (Spam ichiga ham qarang) yuborilgan havolani bosing, keyin tugmani bosing.<button class="btn bl" style="margin-top:10px" onclick="chk()">TEKSHIRISH</button></div>`;
+if(isA())h+=`<h2>⚙️ Admin</h2><div class=card><b>So'z qo'shish</b><input id=ag class=in list=gl placeholder="Mavzu (masalan: Oila)"><datalist id=gl>${units.filter(u=>u.w).map(u=>`<option value="${u.n}">`).join('')}</datalist><input id=aa class="in ar" dir=rtl inputmode=none onfocus="kbO('aa')" placeholder="Arabcha"><input id=au class=in placeholder="O'zbekcha"><input id=at class=in placeholder="Talaffuz (ixtiyoriy)"><button class=btn onclick="addW()">QO'SHISH</button></div><div class=card><b>Video qo'shish</b><input id=vt class=in placeholder="Sarlavha"><input id=vu class=in placeholder="YouTube havola"><button class=btn onclick="addV()">QO'SHISH</button></div>`+X.words.map((w,i)=>`<div class=card>${w.g}: <span class=ar>${w.a}</span> ${w.u} <b onclick="delW(${i})" style="float:right">❌</b></div>`).join('')+X.videos.map((v,i)=>`<div class=card>🎬 ${v.t} <b onclick="delV(${i})" style="float:right">❌</b></div>`).join('');
+h+=`<a class=btn style="text-align:center;text-decoration:none;margin-top:20px;background:#229ED9;box-shadow:0 4px 0 #1b7fb0" href="https://t.me/xayrullayevlc" target=_blank>✈️ Muammo yoki taklif: @xayrullayevlc</a>`+(LINK?`<button class="btn bl" style="margin-top:12px" onclick="shr()">DO'STLARGA ULASHISH</button>`:'');
+return h+`<button class=btn style="background:var(--m);box-shadow:0 4px 0 #555;margin-top:20px" onclick="auth.signOut()">CHIQISH</button>`}
+async function chk(){try{await USER.reload();USER=auth.currentUser;await USER.getIdToken(true)}catch(e){}draw();if(!isA())toast('Hali tasdiqlanmagan')}
+function addW(){const g=$('#ag').value.trim(),a=$('#aa').value.trim(),u=$('#au').value.trim();if(!g||!a||!u)return toast("Mavzu, arabcha va o'zbekcha kerak");X.words.push({g,a,u,t:$('#at').value.trim()});saveX()}
+function addV(){const t=$('#vt').value.trim(),m=$('#vu').value.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/);if(!t||!m)return toast("Sarlavha va to'g'ri YouTube havola kerak");X.videos.push({t,id:m[1]});saveX()}
+const delW=i=>{X.words.splice(i,1);saveX()},delV=i=>{X.videos.splice(i,1);saveX()};
+async function saveX(){try{await db.doc('content/app').set(X);localStorage.x=JSON.stringify(X);build();draw();toast('Saqlandi ✅')}catch(e){try{X=JSON.parse(localStorage.x)}catch(z){X={words:[],videos:[]}}toast('Xatolik: '+e.code)}}
+let unsub=null,CH=[],KT='';
+const LINK='';/* APK havolasini shu yerga yozing: const LINK='https://t.me/...' */
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function shr(){navigator.share?navigator.share({title:'Arabcha',text:"Arab tilini bepul o'rganamiz!",url:LINK}):toast(LINK)}
+function kbO(id){KT=id;const e=$('#'+id);e.inputMode='none';e.focus();let k=$('#kb');if(!k){k=document.createElement('div');k.id='kb';document.body.appendChild(k)}
+const rows=["ضصثقفغعهخحجد","شسيبلاتنمكط","ئءؤرىةوزظذ","أإآ\u064E\u064F\u0650\u0651\u0652\u064B\u064C\u064D"];
+k.innerHTML=rows.map(r=>`<div>${[...r].map(c=>`<button onpointerdown="event.preventDefault();ins('${c}')">${c<'\u064B'?c:'\u0640'+c}</button>`).join('')}</div>`).join('')+`<div><button style="flex:3" onpointerdown="event.preventDefault();ins(' ')">␣</button><button onpointerdown="event.preventDefault();ins('⌫')">⌫</button><button onpointerdown="event.preventDefault();kbC()">✕</button></div>`;
+const b=$('.cb');if(b)b.style.bottom=k.offsetHeight+'px';e.scrollIntoView({block:'center'})}
+function kbT(id){$('#kb')&&KT==id?kbC():kbO(id)}
+function kbC(){const e=KT&&$('#'+KT);if(e)e.inputMode='text';const k=$('#kb');if(k)k.remove();const b=$('.cb');if(b)b.style.bottom='';KT=''}
+function ins(c){const e=$('#'+KT);if(!e)return;let s=e.selectionStart,t=e.selectionEnd,v=e.value;if(s==null)s=t=v.length;
+if(c=='⌫'){if(s==t&&s>0)s--;e.value=v.slice(0,s)+v.slice(t);e.selectionStart=e.selectionEnd=s}else{e.value=v.slice(0,s)+c+v.slice(t);e.selectionStart=e.selectionEnd=s+c.length}}
+function chat(){
+if(!unsub)unsub=db.collection('chat').orderBy('t','desc').limit(60).onSnapshot(q=>{CH=q.docs.map(d=>({id:d.id,...d.data()})).reverse();if(tab=='chat')paint()},()=>{});
+return `<h2>Suhbat</h2><div id=cm></div><div style="height:70px"></div><div class=cb><button class=sp style="padding:8px 12px" onclick="kbT('ct')">ع</button><input id=ct class=in dir=auto style="margin:0;flex:1" placeholder="Xabar yozing..." maxlength=500><button class=sp onclick="send()">➤</button></div>`}
+function paint(){const c=$('#cm');if(!c)return;
+c.innerHTML=CH.map(m=>{const me=USER&&m.u==USER.uid;return `<div style="display:flex;justify-content:${me?'flex-end':'flex-start'}"><div class=card style="max-width:82%;margin-bottom:8px;${me?'background:#1cb0f633':''}"><small><b>${esc(m.n||'?')}</b></small>${me||isA()?`<b onclick="delM('${m.id}')" style="float:right;margin-left:10px">✕</b>`:''}<div dir=auto style="font-size:18px">${esc(m.m)}</div></div></div>`}).join('')||'<div class=c>Hali xabar yo\'q. Birinchi bo\'ling!</div>';
+window.scrollTo(0,document.body.scrollHeight)}
+async function send(){const e=$('#ct'),t=e.value.trim();if(!t)return;e.value='';try{await db.collection('chat').add({u:USER.uid,n:P.name||USER.email.split('@')[0],m:t.slice(0,500),t:firebase.firestore.FieldValue.serverTimestamp()})}catch(x){toast('Yuborilmadi');e.value=t}}
+const delM=id=>db.collection('chat').doc(id).delete().catch(()=>toast('Xatolik'));
+try{firebase.initializeApp({apiKey:"AIzaSyADqIOcs0OC7jqBO3E7SsNIYDfKu-3xwGs",authDomain:"xayrullayevlc.firebaseapp.com",projectId:"xayrullayevlc",storageBucket:"xayrullayevlc.firebasestorage.app",messagingSenderId:"206205303339",appId:"1:206205303339:web:5798d20770ed157af8886e"});
+auth=firebase.auth();db=firebase.firestore();
+auth.onAuthStateChanged(async u=>{USER=u;if(!u&&unsub){unsub();unsub=null}CH=[];if(u){try{const s=await db.doc('content/app').get();if(s.exists){X={words:s.data().words||[],videos:s.data().videos||[]};localStorage.x=JSON.stringify(X);build()}}catch(e){}}ready=1;draw()})}catch(e){ready=1}
+draw();
+</script></body></html>
